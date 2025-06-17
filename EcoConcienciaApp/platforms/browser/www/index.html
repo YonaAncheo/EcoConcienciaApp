@@ -58,10 +58,21 @@
     <section id="juego" style="display:none;">
       <h2>Recolecta la Basura</h2>
       <canvas id="canvasJuego" width="300" height="400" style="border:1px solid #ccc;"></canvas>
+      <section id="minijuego" style="display:none;">
+        <h2>¡Recolecta la basura!</h2>
+        <p>Haz clic sobre la basura antes que desaparezca. ¡Tienes 30 segundos!</p>
+        <button onclick="iniciarJuego()">Iniciar Juego</button>
+
+        <div id="juego" style="position: relative; width: 100%; height: 400px; background: url('img/parque.jpg') center/cover no-repeat; border: 2px solid #333; margin-top: 10px; overflow: hidden;">
+          <!-- basura aparecerá aquí -->
+        </div>
+        <p id="puntaje">Puntaje: 0</p>
+      </section>
     </section>
   </main>
 
   <script src="js/main.js"></script>
   <script src="js/calculadora.js"></script>
+  <script src="js/minijuego.js"></script>
 </body>
 </html>
