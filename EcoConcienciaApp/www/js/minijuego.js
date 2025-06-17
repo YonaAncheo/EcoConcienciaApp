@@ -1,13 +1,19 @@
+const btnIniciar = document.getElementById("btnIniciar");
+const btnFinalizar = document.getElementById("btnFinalizar");
+btnFinalizar.disabled = true;
 let puntaje = 0;
 let tiempoJuego = 30; // segundos
 let intervalo;
 
 function iniciarJuego() {
+  btnIniciar.disabled = true;
+  btnFinalizar.disabled = false;
   const contenedor = document.getElementById("zonaJuego");
   if (!contenedor) {
     alert("Error: zona de juego no encontrada.");
     return;
   }
+  
   const puntajeEl = document.getElementById("puntaje");
   puntaje = 0;
   puntajeEl.textContent = "Puntaje: 0";
@@ -17,9 +23,19 @@ function iniciarJuego() {
   }, 800);
 
   setTimeout(() => {
-    clearInterval(intervalo);
-    alert("¡Fin del juego! Tu puntaje final es: " + puntaje);
+    finalizarJuego();
   }, tiempoJuego * 1000);
+}
+
+function finalizarJuego() {
+    clearInterval(intervalo);
+    const contenedor = document.getElementById("zonaJuego");
+    if (contenedor) {
+      contenedor.innerHTML = ""; // limpia basura en pantalla
+    }
+    btnIniciar.disabled = false;
+    btnFinalizar.disabled = true;
+    alert("Juego finalizado. Tu puntaje fue: " + puntaje);
 }
 
 function crearBasura(contenedor) {
@@ -49,4 +65,5 @@ function crearBasura(contenedor) {
   setTimeout(() => {
     basura.remove();
   }, 2000); // desaparece en 2 segundos
+
 }

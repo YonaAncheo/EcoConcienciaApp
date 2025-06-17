@@ -18,6 +18,7 @@ function mostrarSeccion(id) {
   if (seccionActiva) {
     seccionActiva.style.display = "block";
   }
+
 }
 
 // Mostrar la primera sección por defecto (información)
