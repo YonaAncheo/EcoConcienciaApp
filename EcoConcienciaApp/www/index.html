@@ -25,6 +25,34 @@
     <section id="calculadora" style="display:none;">
       <h2>Calculadora de Huella de Carbono</h2>
       <!-- Aquí luego incluimos el formulario -->
+        <section id="calculadora" style="display:none;">
+            <h2>Calculadora de Huella de Carbono</h2>
+            <form id="formCalculadora">
+              <label>
+                ¿Cuántos kilómetros recorres en transporte por semana?
+                <input type="number" id="kmTransporte" required />
+              </label>
+          
+              <label>
+                ¿Cuántos kWh de electricidad consumes al mes?
+                <input type="number" id="kwhMensual" required />
+              </label>
+          
+              <label>
+                ¿Con qué frecuencia consumes carne?
+                <select id="frecuenciaCarne" required>
+                  <option value="0.5">Rara vez</option>
+                  <option value="1">A veces</option>
+                  <option value="1.5">Frecuentemente</option>
+                  <option value="2">Todos los días</option>
+                </select>
+              </label>
+          
+              <button type="submit">Calcular</button>
+            </form>
+    
+            <div id="resultadoCalculadora"></div>
+        </section>
     </section>
 
     <section id="juego" style="display:none;">
@@ -34,5 +62,6 @@
   </main>
 
   <script src="js/main.js"></script>
+  <script src="js/calculadora.js"></script>
 </body>
 </html>
