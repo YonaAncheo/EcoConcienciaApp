@@ -25,3 +25,8 @@ function mostrarSeccion(id) {
 document.addEventListener("DOMContentLoaded", () => {
   mostrarSeccion("informacion");
 });
+
+function toggleContenido(titulo) {
+  const contenido = titulo.nextElementSibling;
+  contenido.style.display = contenido.style.display === "block" ? "none" : "block";
+}
