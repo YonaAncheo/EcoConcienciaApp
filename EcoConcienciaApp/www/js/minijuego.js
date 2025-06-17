@@ -3,7 +3,11 @@ let tiempoJuego = 30; // segundos
 let intervalo;
 
 function iniciarJuego() {
-  const contenedor = document.getElementById("juego");
+  const contenedor = document.getElementById("zonaJuego");
+  if (!contenedor) {
+    alert("Error: zona de juego no encontrada.");
+    return;
+  }
   const puntajeEl = document.getElementById("puntaje");
   puntaje = 0;
   puntajeEl.textContent = "Puntaje: 0";
@@ -30,6 +34,9 @@ function crearBasura(contenedor) {
   basura.style.left = Math.random() * (contenedor.clientWidth - 50) + "px";
   basura.style.top = Math.random() * (contenedor.clientHeight - 50) + "px";
   basura.style.cursor = "pointer";
+  basura.style.border = "2px solid red"; // temporal
+  basura.style.zIndex = "10";
+  basura.style.display = "block";
 
   basura.onclick = () => {
     puntaje++;
