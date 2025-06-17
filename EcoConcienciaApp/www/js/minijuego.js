@@ -1,9 +1,11 @@
 const btnIniciar = document.getElementById("btnIniciar");
 const btnFinalizar = document.getElementById("btnFinalizar");
-btnFinalizar.disabled = true;
+let tiempoTerminar; // variable para el timeout
 let puntaje = 0;
 let tiempoJuego = 30; // segundos
 let intervalo;
+
+btnFinalizar.disabled = true;
 
 function iniciarJuego() {
   btnIniciar.disabled = true;
@@ -22,20 +24,22 @@ function iniciarJuego() {
     crearBasura(contenedor);
   }, 800);
 
-  setTimeout(() => {
+  tiempoTerminar = setTimeout(() => {
     finalizarJuego();
   }, tiempoJuego * 1000);
+
 }
 
 function finalizarJuego() {
-    clearInterval(intervalo);
-    const contenedor = document.getElementById("zonaJuego");
-    if (contenedor) {
-      contenedor.innerHTML = ""; // limpia basura en pantalla
-    }
-    btnIniciar.disabled = false;
-    btnFinalizar.disabled = true;
-    alert("Juego finalizado. Tu puntaje fue: " + puntaje);
+  clearInterval(intervalo);
+  clearTimeout(tiempoTerminar); // evita que se llame nuevamente
+  const contenedor = document.getElementById("zonaJuego");
+  if (contenedor) {
+    contenedor.innerHTML = ""; // limpia basura en pantalla
+  }
+  btnIniciar.disabled = false;
+  btnFinalizar.disabled = true;
+  alert("Juego finalizado. Tu puntaje fue: " + puntaje);
 }
 
 function crearBasura(contenedor) {

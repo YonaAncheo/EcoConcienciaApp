@@ -10,64 +10,105 @@
   <header>
     <h1>EcoConciencia</h1>
     <nav>
-      <button onclick="mostrarSeccion('info')">Información</button>
+      <button onclick="mostrarSeccion('informacion')">Información</button>
       <button onclick="mostrarSeccion('calculadora')">Calculadora</button>
       <button onclick="mostrarSeccion('juego')">Minijuego</button>
     </nav>
   </header>
 
   <main>
-    <section id="info">
-      <h2>¿Por qué reciclar?</h2>
-      <p>Reciclar ayuda a reducir la contaminación, ahorrar recursos y proteger la biodiversidad...</p>
+    <section id="informacion" style="display:none;">
+      <!-- Post 1 -->
+      <article class="articulo-info">
+        <h3 class="titulo-post" onclick="toggleContenido(this)">¿Qué es la huella de carbono?</h3>
+        <div class="contenido-post">
+          <p>La <strong>huella de carbono</strong> representa la cantidad de gases de efecto invernadero (como el CO₂) que emitimos como consecuencia de nuestras actividades diarias, como el transporte, el consumo eléctrico o la alimentación.</p>
+          <p>Medirla es una forma efectiva de conocer nuestro impacto ambiental y comenzar a tomar decisiones más responsables. Puedes calcular tu huella mensual con nuestra <strong>Calculadora de Huella de Carbono</strong>.</p>
+          <p><em>¡Te invitamos a usarla y descubrir tu impacto!</em></p>
+          <p class="referencia">Fuente: Biblioteca del Congreso Nacional de Chile, sección medioambiente, 2023.</p>
+        </div>
+      </article>
+      
+      <!-- Post 2 -->
+      <article class="articulo-info">
+        <h3 class="titulo-post" onclick="toggleContenido(this)">Estrategias para reducir tu huella de carbono</h3>
+        <div class="contenido-post">
+          <ul>
+            <li>Usa medios de transporte sostenibles como la bicicleta o el transporte público.</li>
+            <li>Disminuye tu consumo eléctrico usando ampolletas LED y desconectando aparatos en desuso.</li>
+            <li>Reduce el consumo de carne roja e incorpora más alimentos vegetales.</li>
+            <li>Reutiliza, recicla y elige productos con menor empaque.</li>
+            <li>Compra productos locales y de temporada.</li>
+          </ul>
+          <p>Pequeños cambios diarios pueden lograr un gran impacto positivo. ¡Empieza hoy!</p>
+          <p class="referencia">Fuente: Agencia de Sustentabilidad y Cambio Climático de Chile, 2024.</p>
+        </div>
+      </article>
+      <!-- Post 3 -->
+      <article class="articulo-info">
+        <h3 class="titulo-post" onclick="toggleContenido(this)">Buenos hábitos ecológicos para el día a día</h3>
+        <div class="contenido-post">
+          <ul>
+            <li>Lleva tu bolsa reutilizable al supermercado.</li>
+            <li>Reduce tu tiempo en la ducha para ahorrar agua.</li>
+            <li>Planta árboles o apoya iniciativas de reforestación.</li>
+            <li>Recicla en casa separando residuos orgánicos, plásticos, vidrios y papeles.</li>
+            <li>Difunde información ecológica para generar conciencia en tu entorno.</li>
+          </ul>
+          <p>Recuerda: cada acción cuenta. ¡Sé parte del cambio!</p>
+          <p class="referencia">Fuente: Fundación Chile Sustentable, Guía de Buenas Prácticas, 2023.</p>
+        </div>
+      </article>
     </section>
 
     <section id="calculadora" style="display:none;">
       <h2>Calculadora de Huella de Carbono</h2>
       <!-- Aquí luego incluimos el formulario -->
-        <section id="calculadora" style="display:none;">
-            <h2>Calculadora de Huella de Carbono</h2>
-            <form id="formCalculadora">
-              <label>
-                ¿Cuántos kilómetros recorres en transporte por semana?
-                <input type="number" id="kmTransporte" required />
-              </label>
-          
-              <label>
-                ¿Cuántos kWh de electricidad consumes al mes?
-                <input type="number" id="kwhMensual" required />
-              </label>
-          
-              <label>
-                ¿Con qué frecuencia consumes carne?
-                <select id="frecuenciaCarne" required>
-                  <option value="0.5">Rara vez</option>
-                  <option value="1">A veces</option>
-                  <option value="1.5">Frecuentemente</option>
-                  <option value="2">Todos los días</option>
-                </select>
-              </label>
-          
-              <button type="submit">Calcular</button>
-            </form>
+      <form id="formCalculadora">
+        <label>
+          ¿Cuántos kilómetros recorres en transporte por semana?
+          <input type="number" id="kmTransporte" required />
+        </label>
     
-            <div id="resultadoCalculadora"></div>
-        </section>
+        <label>
+          ¿Cuántos kWh de electricidad consumes al mes?
+          <input type="number" id="kwhMensual" required />
+        </label>
+    
+        <label>
+          ¿Con qué frecuencia consumes carne?
+          <select id="frecuenciaCarne" required>
+            <option value="0.5">Rara vez</option>
+            <option value="1">A veces</option>
+            <option value="1.5">Frecuentemente</option>
+            <option value="2">Todos los días</option>
+          </select>
+        </label>
+    
+        <button type="submit">Calcular</button>
+      </form>
+      <div id="resultadoCalculadora"></div>
     </section>
 
     <section id="juego" style="display:none;">
-      <h2>Recolecta la Basura</h2>
-      <canvas id="canvasJuego" width="300" height="400" style="border:1px solid #ccc;"></canvas>
-      <section id="minijuego" style="display:none;">
-        <h2>¡Recolecta la basura!</h2>
-        <p>Haz clic sobre la basura antes que desaparezca. ¡Tienes 30 segundos!</p>
-        <button onclick="iniciarJuego()">Iniciar Juego</button>
+      <h2>¡Recolecta la basura!</h2>
+      <p>Haz clic sobre la basura antes que desaparezca. ¡Tienes 30 segundos!</p>
+      <button id="btnIniciar" onclick="iniciarJuego()">Iniciar Juego</button>
+      <button id="btnFinalizar" onclick="finalizarJuego()">Finalizar Juego</button>
 
-        <div id="juego" style="position: relative; width: 100%; height: 400px; background: url('img/parque.jpg') center/cover no-repeat; border: 2px solid #333; margin-top: 10px; overflow: hidden;">
-          <!-- basura aparecerá aquí -->
-        </div>
-        <p id="puntaje">Puntaje: 0</p>
-      </section>
+      <!-- Zona del juego (canvas simulado) -->
+      <div id="zonaJuego" style="
+        position: relative;
+        width: 100%;
+        height: 400px;
+        background: url('img/parque.jpg') center/cover no-repeat;
+        border: 2px solid #333;
+        margin-top: 10px;
+        overflow: hidden;">
+        <!-- La basura aparecerá aquí -->
+      </div>
+    
+      <p id="puntaje">Puntaje: 0</p>
     </section>
   </main>
 
